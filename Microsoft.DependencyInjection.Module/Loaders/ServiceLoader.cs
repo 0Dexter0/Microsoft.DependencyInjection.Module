@@ -8,8 +8,18 @@ public static class ServiceLoader
     public static void Load(IServiceCollection services)
     {
         var injectModules = AssemblyLoader.LoadAssemblies()
-            .SelectMany(x => x.GetTypes())
-            .Where(x => typeof(InjectionModuleBase).IsAssignableFrom(x) && !x.IsAbstract).ToList();
+            .SelectMany(x =>
+            {
+                try
+                {
+                    return x.GetTypes();
+                }
+                catch (Exception)
+                {
+                    return Array.Empty<Type>();
+                }
+            })
+    .Where(x => typeof(InjectionModuleBase).IsAssignableFrom(x) && !x.IsAbstract).ToList();
 
         injectModules.ForEach(x =>
         {

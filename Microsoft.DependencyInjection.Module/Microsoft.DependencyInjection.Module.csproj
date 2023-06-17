@@ -13,7 +13,7 @@
 
     <PropertyGroup>
         <PackageId>MicrosoftDI.Module</PackageId>
-        <Version>1.0.0</Version>
+        <Version>1.0.1</Version>
         <Authors>Serhii Bilous</Authors>
         <Description>This package allows you use Microsoft DI anywhere in your project.</Description>
         <Copyright>MIT License</Copyright>
